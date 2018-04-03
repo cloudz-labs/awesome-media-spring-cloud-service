@@ -14,7 +14,7 @@
 	<modules>
 		<module>awesome-media-apigateway</module>
 		<module>awesome-media-config-server</module>
-		<module>awesome-media-discovery-service</module>
+		<module>awesome-media-discovery</module>
 		<module>awesome-media-hystrix-dashboard</module>
 	</modules>
 		
