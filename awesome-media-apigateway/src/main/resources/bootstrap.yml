@@ -1,0 +1,16 @@
+
+spring:
+  profiles: default
+  cloud:
+    config:
+      uri: http://localhost:8888
+      name: awesome-media-apigateway
+
+---
+
+spring:
+  profiles: k8s
+  cloud:
+    config:
+      uri: http://awesome-media-config-server:8888
+      name: awesome-media-apigateway

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: awesome-media-hystrix-dashboard
+spec:
+  ports:
+    - name: "http"
+      port: 7979
+      targetPort: 7979
+  selector:
+    app: awesome-media-hystrix-dashboard
+  type: NodePort

@@ -1,0 +1,35 @@
+zuul:
+  ignored-services: "*"
+  routes:
+#    awesome-media-backend:
+#      path: /awesome-media/**
+#      url: http://${AWESOME_MEDIA_BACKEND_SERVICE_HOST}:${AWESOME_MEDIA_BACKEND_SERVICE_PORT}
+    awesome-media-backend: /awesome-media/**
+    ribbon-test:
+      path: /ribbon-test/**  
+
+ribbon-test:
+  ribbon:
+    listOfServers: google.com, naver.com
+
+eureka:
+  instance:
+    instance-id: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+    hostname: ${spring.application.name}
+    prefer-ip-address: true
+    ip-address: ${spring.application.name}
+    non-secure-port: ${server.port}
+  client:
+    region: default
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://awesome-media-discovery:8761/eureka/
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds:  60000

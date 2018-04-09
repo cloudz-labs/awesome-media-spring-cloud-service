@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: awesome-media-apigateway
+spec:
+  ports:
+    - name: "http"
+      port: 9999
+      targetPort: 9999
+  selector:
+    app: awesome-media-apigateway
+  type: NodePort

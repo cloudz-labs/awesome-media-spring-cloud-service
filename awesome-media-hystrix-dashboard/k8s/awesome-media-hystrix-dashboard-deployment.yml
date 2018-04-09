@@ -1,0 +1,33 @@
+apiVersion: apps/v1beta2 # for versions before 1.8.0 use apps/v1beta1
+kind: Deployment
+metadata:
+  name: awesome-media-hystrix-dashboard
+  labels:
+    app: awesome-media-hystrix-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: awesome-media-hystrix-dashboard
+  template:
+    metadata:
+      labels:
+        app: awesome-media-hystrix-dashboard
+    spec:
+      containers:
+      - name: awesome-media-hystrix-dashboard
+        image: jisang/awesome-media-hystrix-dashboard:1.0
+        #icp.ghama.io:8500/ns-edu15/awesome-media-hystrix-dashboard:1.0
+        ports:
+        - containerPort: 7979
+        imagePullPolicy: Always
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: k8s
+        resources:
+          requests:
+            memory: "250Mi"
+            cpu: "45m"
+          limits:
+            memory: "800Mi"
+            cpu: "0.45"

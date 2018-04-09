@@ -1,6 +1,10 @@
 server:
-  port: 6379
+  port: 8761
+
+management:
+  security:
+    enabled: false
 
 spring:
   application:
-    name: awesome-media-discovery-service
+    name: awesome-media-discovery
